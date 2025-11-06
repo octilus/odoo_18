@@ -9,7 +9,7 @@
 		<menuitem id="menu_backend_config" name="Backend Config" 
 			parent="facilsoft_theme_backend.back_config_main" action="action_backend_config" sequence="80" /> -->
 
-		<menuitem id="bizople_backend_theme_configuration_mainmenu" name="facilsoft Configuration" 
+		<menuitem id="facilsoft_backend_theme_configuration_mainmenu" name="facilsoft Configuration" 
 			parent="base.menu_administration" sequence="10"/>
 
 		<record model='ir.actions.act_url' id='action_facilsoft_documentation'>
@@ -18,21 +18,21 @@
         </record>
 		<menuitem  action="facilsoft_theme_backend.action_facilsoft_app_group" 
 			id="facilsoft_app_group" 
-			parent="bizople_backend_theme_configuration_mainmenu" 
+			parent="facilsoft_backend_theme_configuration_mainmenu" 
 			sequence="2"/>
 
-        <menuitem id="facilsoft_documentation_menu" parent="bizople_backend_theme_configuration_mainmenu" 
+        <menuitem id="facilsoft_documentation_menu" parent="facilsoft_backend_theme_configuration_mainmenu" 
 			name="facilsoft Documentation" sequence="1" action="action_facilsoft_documentation"/>
 
 		<menuitem action="facilsoft_theme_backend.change_menu_icon_action" id="change_menu_icon_menu" 
-			parent="bizople_backend_theme_configuration_mainmenu" sequence="5"/>
+			parent="facilsoft_backend_theme_configuration_mainmenu" sequence="5"/>
 
 		<menuitem action="facilsoft_theme_backend.act_open_pwa_shortcuts_view" id="pwa_shortcuts_view_tree_menuitem" 
-			parent="bizople_backend_theme_configuration_mainmenu" sequence="5"/>
+			parent="facilsoft_backend_theme_configuration_mainmenu" sequence="5"/>
 
 		<menuitem id="menu_google_font_family"
 			name="Google Font Links"
-			parent="bizople_backend_theme_configuration_mainmenu"
+			parent="facilsoft_backend_theme_configuration_mainmenu"
 			action="action_google_font_family"
 			sequence="1"
 			groups="base.group_no_one"/>

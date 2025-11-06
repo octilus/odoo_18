@@ -147,7 +147,7 @@
 													onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" />
 												<label class="custom-file-label" for="menu_bg_image"></label>
 												<img id="blah" alt="your image" class="img img-fluid mt-3"
-													t-att-src="'/web/image/backend.config/%s/menu_bg_image' %(config_vals.id)" />
+													t-att-src="'/web/image/facilsoft.backend.configurator/%s/menu_bg_image' %(config_vals.id)" />
 											</div>
 										</div>
 									</div>
@@ -192,7 +192,7 @@
 																	t-att-checked="config_vals.top_menu_bg_vertical_mini_2 == 'top_menu_vertical_bg4'" />
 																<label class="custom-control-label ms-3" for="top_menu_vertical_bg4">
 																	<img id="img_preview_vertical_mini_2" alt="your image" class="img img-fluid"
-																		t-att-src="'/web/image/backend.config/%s/top_menu_custom_bg_vertical_mini_2' %(config_vals.id)" />
+																		t-att-src="'/web/image/facilsoft.backend.configurator/%s/top_menu_custom_bg_vertical_mini_2' %(config_vals.id)" />
 																</label>
 															</div>
 														</div>
@@ -1102,7 +1102,7 @@
 										onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" />
 									<label class="custom-file-label" for="light_bg_image"></label>
 									<img id="blah" alt="your image" class="img img-fluid mt-3"
-										t-att-src="'/web/image/backend.config/%s/light_bg_image' %(config_vals.id)" />
+										t-att-src="'/web/image/facilsoft.backend.configurator/%s/light_bg_image' %(config_vals.id)" />
 								</div>
 							</div>
 						</div>

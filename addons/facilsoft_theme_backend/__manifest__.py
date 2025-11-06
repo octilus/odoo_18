@@ -14,6 +14,7 @@
     },
     'depends': ['web', 'base_setup', 'portal', 'resource'],
     'data': [
+        'security/ir.model.access.csv',
         'data/backend_config_data.xml',
         'data/global_level_config.xml',
         'views/manifest.xml',
@@ -122,7 +123,7 @@
             'facilsoft_theme_backend/static/src/js/split_view/split_view_controller.js',
             'facilsoft_theme_backend/static/src/js/split_view/split_view_container.js',
             "/facilsoft_theme_backend/static/src/js/list_view_renderer.js",
-            "/facilsoft_theme_backend/static/src/js/facilsoftPageTitle.js",
+            "/facilsoft_theme_backend/static/src/js/SpiffyPageTitle.js",
             "/facilsoft_theme_backend/static/src/js/pwebapp.js",
             "/facilsoft_theme_backend/static/src/js/iconpack_load.js",
             "/facilsoft_theme_backend/static/src/js/action_service.js",

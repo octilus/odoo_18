@@ -3,8 +3,8 @@
 # See LICENSE file for full copyright and licensing details. -->
 <odoo>
     <record id="view_google_font_family_tree" model="ir.ui.view">
-        <field name="name">google.font.family.list</field>
-        <field name="model">google.font.family</field>
+        <field name="name">facilsoft.google.font.family.list</field>
+        <field name="model">facilsoft.google.font.family</field>
         <field name="arch" type="xml">
             <list string="Google Font Links" editable="bottom">
                 <field name="name"/>
@@ -19,7 +19,7 @@
     <!-- Optional action -->
     <record id="action_google_font_family" model="ir.actions.act_window">
         <field name="name">Google Font Links</field>
-        <field name="res_model">google.font.family</field>
+        <field name="res_model">facilsoft.google.font.family</field>
         <field name="view_mode">list</field>
     </record>
 </odoo>

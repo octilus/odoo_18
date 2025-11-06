@@ -3,7 +3,7 @@
 # See LICENSE file for full copyright and licensing details. -->
 <odoo>
     <data noupdate="1">
-        <record id="backend_config_data" model="backend.config">
+        <record id="backend_config_data" model="facilsoft.backend.configurator">
             <field name="light_primary_bg_color">#1B1263</field>
             <field name="light_primary_text_color">#ffffff</field>
             <!-- <field name="google_font_family">Rubik</field>

@@ -6,7 +6,7 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 
 class facilsoftAppGroup(models.Model):
-    _name = 'facilsoft.facilsoft.app.group'
+    _name = 'facilsoft.app.group'
     _description = 'facilsoft App Group'
     _order = 'sequence'
 

@@ -10,6 +10,6 @@ class GoogleFontlink(models.Model):
 
     name = fields.Char("Name")
     url = fields.Char("URL")
-    config_id = fields.Many2one('backend.config', string="Backend Config")
+    config_id = fields.Many2one('facilsoft.backend.configurator', string="Backend Config")
     is_selected = fields.Boolean("Is Selected", default=False)
     user_id = fields.Many2one('res.users')

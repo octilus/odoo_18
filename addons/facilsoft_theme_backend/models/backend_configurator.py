@@ -95,7 +95,7 @@ class BackendConfig(models.Model):
         ('drawer_pallet_19', 'Color Pallet 19'),
     ], default="drawer_pallet_19", string="Drawer Color Pallets")
     google_font_family = fields.Char(string="Google Font Family")
-    google_font_links_ids = fields.One2many('google.font.family', 'config_id', string="Google Font Links")
+    google_font_links_ids = fields.One2many('facilsoft.google.font.family', 'config_id', string="Google Font Links")
 
     appdrawer_custom_bg_color = fields.Char(string="App Drawer Custom Background Color",default="#1B1263")
     appdrawer_custom_text_color = fields.Char(string="App Drawer Custom Text Color",default="#ffffff")

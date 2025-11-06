@@ -20,7 +20,7 @@ class BackendConfigrationRec(http.Controller):
         domain = self._get_user_specific_domain(user)
 
         # Fetch the records with the domain applied
-        globalsearchobj = request.env['global.search.bizople'].sudo()
+        globalsearchobj = request.env['facilsoft.global.search'].sudo()
         global_search_ids = globalsearchobj.search(domain)
 
         global_search_ids_list = []
@@ -86,7 +86,7 @@ class BackendConfigrationRec(http.Controller):
         # Get the model and id from the request
         model_name = kw.get('model')
         search_vals = kw.get('searchvals')
-        global_search = request.env['global.search.bizople'].sudo().browse(int(kw.get('id')))
+        global_search = request.env['facilsoft.global.search'].sudo().browse(int(kw.get('id')))
 
         if global_search:
             field_match_counts = {}

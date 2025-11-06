@@ -3,8 +3,8 @@
 # See LICENSE file for full copyright and licensing details. -->
 <odoo>
 	<record id="global_search_config_list_view" model="ir.ui.view">
-		<field name="name">global.search.bizople.list.view</field>
-		<field name="model">global.search.bizople</field>
+		<field name="name">facilsoft.global.search.list.view</field>
+		<field name="model">facilsoft.global.search</field>
 		<field name="type">list</field>
 		<field name="arch" type="xml">
 			<list string="Global Search">
@@ -16,8 +16,8 @@
 	</record>
 
 	<record id="global_search_config_form_view" model="ir.ui.view">
-		<field name="name">global.search.bizople.form.view</field>
-		<field name="model">global.search.bizople</field>
+		<field name="name">facilsoft.global.search.form.view</field>
+		<field name="model">facilsoft.global.search</field>
 		<field name="type">form</field>
 		<field name="arch" type="xml">
 			<form string="Global Search">
@@ -39,9 +39,9 @@
 	<record id="action_global_search_config" model="ir.actions.act_window">
         <field name="name">Global Search</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">global.search.bizople</field>
+        <field name="res_model">facilsoft.global.search</field>
         <field name="view_mode">list,form</field>
     </record>
 
-    <menuitem action="facilsoft_theme_backend.action_global_search_config" id="global_search_config_menuitem" parent="facilsoft_theme_backend.bizople_backend_theme_configuration_mainmenu" sequence="9"/>
+    <menuitem action="facilsoft_theme_backend.action_global_search_config" id="global_search_config_menuitem" parent="facilsoft_theme_backend.facilsoft_backend_theme_configuration_mainmenu" sequence="9"/>
 </odoo>

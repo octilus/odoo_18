@@ -3,8 +3,8 @@
 # See LICENSE file for full copyright and licensing details. -->
 <odoo>
 	<record id="backend_config_list_view" model="ir.ui.view">
-		<field name="name">backend.config.list.view</field>
-		<field name="model">backend.config</field>
+		<field name="name">facilsoft.backend.configurator.list.view</field>
+		<field name="model">facilsoft.backend.configurator</field>
 		<field name="type">list</field>
 		<field name="arch" type="xml">
 			<list string="Backend Config">
@@ -22,8 +22,8 @@
 	</record>
 
 	<record id="backend_config_form_view" model="ir.ui.view">
-		<field name="name">backend.config.form.view</field>
-		<field name="model">backend.config</field>
+		<field name="name">facilsoft.backend.configurator.form.view</field>
+		<field name="model">facilsoft.backend.configurator</field>
 		<field name="type">form</field>
 		<field name="arch" type="xml">
 			<form string="Backend Config">
@@ -75,7 +75,7 @@
 	<record id="action_backend_config" model="ir.actions.act_window">
         <field name="name">Backend Config</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">backend.config</field>
+        <field name="res_model">facilsoft.backend.configurator</field>
         <field name="view_mode">list,form</field>
     </record>
 </odoo>

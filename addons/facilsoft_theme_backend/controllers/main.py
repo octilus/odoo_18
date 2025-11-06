@@ -125,7 +125,7 @@ class BackendConfigration(http.Controller):
         if current_user.backend_theme_config:
             current_user.backend_theme_config.sudo().update(config_vals)
         else:
-            backend_config_record = request.env['backend.config'].sudo().create(
+            backend_config_record = request.env['facilsoft.backend.configurator'].sudo().create(
                 config_vals)
             current_user.sudo().write({
                 'backend_theme_config': backend_config_record.id
@@ -150,13 +150,13 @@ class BackendConfigration(http.Controller):
             elif admin_config:
                 config_vals = admin_config
             else:
-                config_vals = request.env['backend.config'].sudo().search(
+                config_vals = request.env['facilsoft.backend.configurator'].sudo().search(
                     [], order="id asc", limit=1)
         else:
             if admin_config:
                 config_vals = admin_config
             else:
-                config_vals = request.env['backend.config'].sudo().search(
+                config_vals = request.env['facilsoft.backend.configurator'].sudo().search(
                     [], order="id asc", limit=1)
 
         values = {}
@@ -172,7 +172,7 @@ class BackendConfigration(http.Controller):
             lambda font: font.user_id == user and font.config_id == config_vals
         )
         if not config_fonts:
-            config_fonts = request.env['google.font.family']
+            config_fonts = request.env['facilsoft.google.font.family']
 
         config_vals = config_vals.with_context(filtered_fonts=True)
         config_vals.google_font_links_ids = config_fonts
@@ -221,7 +221,7 @@ class BackendConfigration(http.Controller):
             elif admin_config:
                 record_vals = admin_config
             else:
-                record_vals = request.env['backend.config'].sudo().search(
+                record_vals = request.env['facilsoft.backend.configurator'].sudo().search(
                     [], order="id asc", limit=1)
         else:
             if not user.id in admin_users_ids:
@@ -229,12 +229,12 @@ class BackendConfigration(http.Controller):
             if admin_config:
                 record_vals = admin_config
             else:
-                record_vals = request.env['backend.config'].sudo().search(
+                record_vals = request.env['facilsoft.backend.configurator'].sudo().search(
                     [], order="id asc", limit=1)
 
-        prod_obj = request.env['backend.config'].sudo()
+        prod_obj = request.env['facilsoft.backend.configurator'].sudo()
         record_dict = record_vals.read(set(prod_obj._fields))
-        selected_links = request.env['google.font.family'].sudo().search([
+        selected_links = request.env['facilsoft.google.font.family'].sudo().search([
             ('config_id', '=', record_vals.id),
             ('is_selected', '=', True)
         ])
@@ -663,7 +663,7 @@ class BackendConfigration(http.Controller):
     @http.route(['/active/dark/mode'], type='json', auth='public')
     def active_dark_mode(self, **kw):
         dark_mode = kw.get('dark_mode')
-        backend_theme_config = request.env['backend.config'].sudo().search([])
+        backend_theme_config = request.env['facilsoft.backend.configurator'].sudo().search([])
         user = request.env.user
         if dark_mode == 'on':
             user.update({
@@ -726,7 +726,7 @@ class BackendConfigration(http.Controller):
 
     @http.route(['/get/mutli/tab'], type='json', auth='public')
     def get_multi_tab(self, **kw):
-        obj = request.env['biz.multi.tab']
+        obj = request.env['facilsoft.multi.tab']
         user = request.env.user
         if user.multi_tab_ids:
             record_dict = user.multi_tab_ids.sudo().read(set(obj._fields))
@@ -736,7 +736,7 @@ class BackendConfigration(http.Controller):
 
     @http.route(['/remove/multi/tab'], type='json', auth='public')
     def remove_multi_tab(self, **kw):
-        multi_tab = request.env['biz.multi.tab'].sudo().search(
+        multi_tab = request.env['facilsoft.multi.tab'].sudo().search(
             [('id', '=', kw.get('multi_tab_id'))])
         multi_tab.unlink()
         user = request.env.user
@@ -755,7 +755,7 @@ class BackendConfigration(http.Controller):
         ActionId = kw.get('ActionId')
         menu_xmlid = kw.get('menu_xmlid')
 
-        multi_tab = request.env['biz.multi.tab'].sudo().search(
+        multi_tab = request.env['facilsoft.multi.tab'].sudo().search(
             [('id', '=', tabId)])
         if multi_tab:
             multi_tab.sudo().write({
@@ -785,7 +785,7 @@ class BackendConfigration(http.Controller):
 
     @http.route(['/update/bookmark/link'], type='json', auth='public')
     def update_bookmark_link(self, **kw):
-        bookmark = request.env['bookmark.link'].sudo().search(
+        bookmark = request.env['facilsoft.bookmark'].sudo().search(
             [('id', '=', kw.get('bookmark_id'))])
         updated_bookmark = bookmark.update({
             'name': kw.get('bookmark_name'),
@@ -795,14 +795,14 @@ class BackendConfigration(http.Controller):
 
     @http.route(['/remove/bookmark/link'], type='json', auth='public')
     def remove_bookmark_link(self, **kw):
-        bookmark = request.env['bookmark.link'].sudo().search(
+        bookmark = request.env['facilsoft.bookmark'].sudo().search(
             [('id', '=', kw.get('bookmark_id'))])
         bookmark.unlink()
         return True
 
     @http.route(['/get/bookmark/link'], type='json', auth='public')
     def get_bookmark_link(self, **kw):
-        obj = request.env['bookmark.link']
+        obj = request.env['facilsoft.bookmark']
         user = request.env.user
         record_dict = user.bookmark_ids.sudo().read(set(obj._fields))
         return record_dict
@@ -824,7 +824,7 @@ class BackendConfigration(http.Controller):
         if current_user.backend_theme_config:
             current_user.backend_theme_config.sudo().update(config_vals)
         else:
-            backend_config_record = request.env['backend.config'].sudo().create(
+            backend_config_record = request.env['facilsoft.backend.configurator'].sudo().create(
                 config_vals)
             current_user.sudo().write({
                 'backend_theme_config': backend_config_record.id
@@ -844,7 +844,7 @@ class BackendConfigration(http.Controller):
         if current_user.backend_theme_config:
             current_user.backend_theme_config.sudo().write(config_vals)
         else:
-            config = request.env['backend.config'].sudo().create(config_vals)
+            config = request.env['facilsoft.backend.configurator'].sudo().create(config_vals)
             current_user.sudo().write({'backend_theme_config': config.id})
 
         return True
@@ -862,7 +862,7 @@ class BackendConfigration(http.Controller):
         if current_user.backend_theme_config:
             current_user.backend_theme_config.sudo().write(config_vals)
         else:
-            config = request.env['backend.config'].sudo().create(config_vals)
+            config = request.env['facilsoft.backend.configurator'].sudo().create(config_vals)
             current_user.sudo().write({'backend_theme_config': config.id})
 
         return True
@@ -1117,7 +1117,7 @@ class BackendConfigration(http.Controller):
             user_tz_offset = user.tz_offset
             user_tz_offset_time = datetime.datetime.strptime(user_tz_offset, '%z')
 
-            todo_obj = request.env['todo.list'].sudo()
+            todo_obj = request.env['facilsoft.to.do.list'].sudo()
 
             if is_update:
                 todo_record = todo_obj.browse(int(note_id))
@@ -1153,7 +1153,7 @@ class BackendConfigration(http.Controller):
     def delete_todo(self, **kw):
         note_id = kw.get('noteID', None)
         if note_id:
-            todo_obj = request.env['todo.list'].sudo()
+            todo_obj = request.env['facilsoft.to.do.list'].sudo()
             todo_record = todo_obj.browse(note_id)
             todo_record.unlink()
             return True
@@ -1199,9 +1199,9 @@ class BackendConfigration(http.Controller):
                 device_token = post.get('device_token')
                 device_name = post.get('device_name')
                 if device_token and device_name:
-                    user_obj = request.env['mail.firebase'].sudo().search([('user_id','=',int(uid)),('token','=',device_token)])
+                    user_obj = request.env['facilsoft.mail.firebase'].sudo().search([('user_id','=',int(uid)),('token','=',device_token)])
                     if not user_obj:
-                        request.env['mail.firebase'].sudo().create({'user_id':int(uid),'os':device_name,'token':device_token})
+                        request.env['facilsoft.mail.firebase'].sudo().create({'user_id':int(uid),'os':device_name,'token':device_token})
         return {'code':200, 'message':'Data match successfully'}
 
     @http.route('/add/google/font', type='json', auth='none', methods=['POST'])
@@ -1214,13 +1214,13 @@ class BackendConfigration(http.Controller):
         if not (name and url):
             return {"status": "error", "message": "Missing data"}
 
-        existing_font_user = request.env['google.font.family'].sudo().search([
+        existing_font_user = request.env['facilsoft.google.font.family'].sudo().search([
             ('name', '=', name),
             ('user_id', '=', current_user.id)
         ], limit=1)
 
         if existing_font_user:
-            request.env['google.font.family'].sudo().search([
+            request.env['facilsoft.google.font.family'].sudo().search([
                 ('user_id', '=', current_user.id)
             ]).write({'is_selected': False})
 
@@ -1232,12 +1232,12 @@ class BackendConfigration(http.Controller):
                 "url": existing_font_user.url,
             }
 
-        existing_font_global = request.env['google.font.family'].sudo().search([
+        existing_font_global = request.env['facilsoft.google.font.family'].sudo().search([
             ('name', '=', name),
             ('user_id', '!=', current_user.id)
         ], limit=1)
 
-        user_fonts = request.env['google.font.family'].sudo().search([
+        user_fonts = request.env['facilsoft.google.font.family'].sudo().search([
             ('user_id', '=', current_user.id)
         ])
         if len(user_fonts) >= 5:
@@ -1248,7 +1248,7 @@ class BackendConfigration(http.Controller):
 
         user_fonts.write({'is_selected': False})
 
-        new_font = request.env['google.font.family'].sudo().create({
+        new_font = request.env['facilsoft.google.font.family'].sudo().create({
             'name': name,
             'url': url if existing_font_global else url,
             'user_id': current_user.id,
@@ -1272,7 +1272,7 @@ class BackendConfigration(http.Controller):
     def delete_google_font(self, **post):
         font_id = post.get("id")
         if font_id:
-            font = request.env['google.font.family'].sudo().browse(int(font_id))
+            font = request.env['facilsoft.google.font.family'].sudo().browse(int(font_id))
             if font.exists():
                 font.unlink()
                 return {"status": "success"}
@@ -1282,14 +1282,14 @@ class BackendConfigration(http.Controller):
     @http.route('/update_single_font_selection', type='json', auth='user')
     def update_single_font_selection(self, font_id, backend_config_id):
         if font_id == None:
-            request.env['google.font.family'].sudo().search([
+            request.env['facilsoft.google.font.family'].sudo().search([
                 ('config_id', '=', backend_config_id),
             ]).write({'is_selected': False})
             return {'status': 'success'}
         else: 
-            font = request.env['google.font.family'].sudo().browse(font_id)
+            font = request.env['facilsoft.google.font.family'].sudo().browse(font_id)
             if font:
-                request.env['google.font.family'].sudo().search([
+                request.env['facilsoft.google.font.family'].sudo().search([
                     ('config_id', '=', font.config_id.id),
                     ('id', '!=', font_id)
                 ]).write({'is_selected': False})
@@ -1393,9 +1393,9 @@ class AuthHome(Home):
                     device_token = kwargs.get('device_token')
                     device_name = kwargs.get('tool_color_id')
                     if device_name and device_token:
-                        user_obj = request.env['mail.firebase'].search([('user_id','=',int(uid)),('token','=',device_token)])
+                        user_obj = request.env['facilsoft.mail.firebase'].search([('user_id','=',int(uid)),('token','=',device_token)])
                         if not user_obj:
-                            request.env['mail.firebase'].create({'user_id':int(uid),'os':device_name,'token':device_token})
+                            request.env['facilsoft.mail.firebase'].create({'user_id':int(uid),'os':device_name,'token':device_token})
                     return new_value
                 return response
 

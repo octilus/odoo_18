@@ -42,7 +42,7 @@ class Company(models.Model):
         if admin_config:
             config_vals = admin_config
         else:
-            config_vals = request.env['backend.config'].sudo().search([], order="id asc", limit=1)
+            config_vals = request.env['facilsoft.backend.configurator'].sudo().search([], order="id asc", limit=1)
         
         values = {
             'config_vals': config_vals,

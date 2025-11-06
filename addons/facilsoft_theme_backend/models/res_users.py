@@ -11,11 +11,11 @@ class User(models.Model):
     bookmark_ids = fields.One2many('facilsoft.bookmark', 'user_id',string="Bookmark Links")
     dark_mode = fields.Boolean(string="Is dark Mode Active", default=False)
     vertical_sidebar_pinned = fields.Boolean(string="Pinned Sidebar", default=True)
-    backend_theme_config = fields.Many2one('backend.config', string="Backend Config", copy=False)
+    backend_theme_config = fields.Many2one('facilsoft.backend.configurator', string="Backend Config", copy=False)
     multi_tab_ids = fields.One2many('facilsoft.multi.tab', 'user_id', string="Multi Tabs")
     enable_todo_list = fields.Boolean(string="Enable To Do List", default=True)
     todo_list_ids = fields.One2many('facilsoft.to.do.list', 'user_id', string="To Do List")
-    mail_firebase_tokens = fields.One2many("mail.firebase", "user_id", string="Android device(tokens)")
+    mail_firebase_tokens = fields.One2many("facilsoft.mail.firebase", "user_id", string="Android device(tokens)")
     bookmark_panel = fields.Boolean(string="Show right bookmark panel", default=True)
     #Unused Fields
     table_color = fields.Boolean(string="Is Body Color")
@@ -34,7 +34,7 @@ class User(models.Model):
         for vals in vals_list:
             if not vals.get('backend_theme_config'):
 
-                backend_config = self.env['backend.config'].create({
+                backend_config = self.env['facilsoft.backend.configurator'].create({
                     'light_primary_bg_color': '#0097a7',
                     'light_primary_text_color': '#ffffff',
                 })
